@@ -13,6 +13,13 @@
 		F6CDD1902A43068C00BEDFEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6CDD18E2A43068C00BEDFEA /* Main.storyboard */; };
 		F6CDD1922A43069400BEDFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6CDD1912A43069400BEDFEA /* Assets.xcassets */; };
 		F6CDD1952A43069400BEDFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6CDD1932A43069400BEDFEA /* LaunchScreen.storyboard */; };
+		F6CDD19D2A4307DC00BEDFEA /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CDD19C2A4307DC00BEDFEA /* Button.swift */; };
+		F6CDD1A72A435B9700BEDFEA /* PictoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CDD1A62A435B9600BEDFEA /* PictoView.swift */; };
+		F6FC8BD92A4AD5F7007F23CC /* PictoBoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC8BD82A4AD5F7007F23CC /* PictoBoneView.swift */; };
+		F6FC8BDB2A4DDAF6007F23CC /* BoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC8BDA2A4DDAF6007F23CC /* BoneView.swift */; };
+		F6FC8BDD2A4DDB0B007F23CC /* OdorikoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC8BDC2A4DDB0B007F23CC /* OdorikoModel.swift */; };
+		F6FC8BDF2A4DDB37007F23CC /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC8BDE2A4DDB37007F23CC /* EditView.swift */; };
+		F6FC8BE12A4E89C4007F23CC /* PictoFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FC8BE02A4E89C4007F23CC /* PictoFaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		F6CDD1912A43069400BEDFEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6CDD1942A43069400BEDFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6CDD1962A43069400BEDFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6CDD19C2A4307DC00BEDFEA /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F6CDD1A62A435B9600BEDFEA /* PictoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoView.swift; sourceTree = "<group>"; };
+		F6FC8BD82A4AD5F7007F23CC /* PictoBoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoBoneView.swift; sourceTree = "<group>"; };
+		F6FC8BDA2A4DDAF6007F23CC /* BoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoneView.swift; sourceTree = "<group>"; };
+		F6FC8BDC2A4DDB0B007F23CC /* OdorikoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OdorikoModel.swift; sourceTree = "<group>"; };
+		F6FC8BDE2A4DDB37007F23CC /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		F6FC8BE02A4E89C4007F23CC /* PictoFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoFaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +70,20 @@
 		F6CDD1872A43068C00BEDFEA /* pictoMaker */ = {
 			isa = PBXGroup;
 			children = (
+				F6FC8BDE2A4DDB37007F23CC /* EditView.swift */,
+				F6FC8BDC2A4DDB0B007F23CC /* OdorikoModel.swift */,
+				F6FC8BDA2A4DDAF6007F23CC /* BoneView.swift */,
 				F6CDD1882A43068C00BEDFEA /* AppDelegate.swift */,
 				F6CDD18A2A43068C00BEDFEA /* SceneDelegate.swift */,
 				F6CDD18C2A43068C00BEDFEA /* ViewController.swift */,
+				F6CDD19C2A4307DC00BEDFEA /* Button.swift */,
 				F6CDD18E2A43068C00BEDFEA /* Main.storyboard */,
 				F6CDD1912A43069400BEDFEA /* Assets.xcassets */,
 				F6CDD1932A43069400BEDFEA /* LaunchScreen.storyboard */,
 				F6CDD1962A43069400BEDFEA /* Info.plist */,
+				F6CDD1A62A435B9600BEDFEA /* PictoView.swift */,
+				F6FC8BD82A4AD5F7007F23CC /* PictoBoneView.swift */,
+				F6FC8BE02A4E89C4007F23CC /* PictoFaceView.swift */,
 			);
 			path = pictoMaker;
 			sourceTree = "<group>";
@@ -139,8 +160,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6CDD18D2A43068C00BEDFEA /* ViewController.swift in Sources */,
+				F6CDD1A72A435B9700BEDFEA /* PictoView.swift in Sources */,
 				F6CDD1892A43068C00BEDFEA /* AppDelegate.swift in Sources */,
+				F6FC8BDB2A4DDAF6007F23CC /* BoneView.swift in Sources */,
 				F6CDD18B2A43068C00BEDFEA /* SceneDelegate.swift in Sources */,
+				F6FC8BE12A4E89C4007F23CC /* PictoFaceView.swift in Sources */,
+				F6FC8BDF2A4DDB37007F23CC /* EditView.swift in Sources */,
+				F6FC8BDD2A4DDB0B007F23CC /* OdorikoModel.swift in Sources */,
+				F6FC8BD92A4AD5F7007F23CC /* PictoBoneView.swift in Sources */,
+				F6CDD19D2A4307DC00BEDFEA /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GVCNFTUVQC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pictoMaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -317,6 +346,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GVCNFTUVQC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pictoMaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
