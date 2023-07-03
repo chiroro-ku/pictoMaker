@@ -57,6 +57,7 @@ import UIKit
         
         super.init(coder: coder)
         self.pictoInit()
+        self.angle = Double.pi/2
         
     }
     
@@ -64,6 +65,7 @@ import UIKit
         
         super.init(frame: frame)
         self.pictoInit()
+        self.angle = Double.pi/2
         
     }
     
