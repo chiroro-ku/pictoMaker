@@ -104,4 +104,11 @@ import UIKit
         
         self.layer.borderColor = UIColor.black.cgColor
     }
+    
+    func moved(point: CGPoint){
+        var center = self.center
+        center.x += point.x
+        center.y += point.y
+        self.center = center
+    }
 }

@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import WebKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var webView: WKWebView!
     
     @IBOutlet weak var editView: EditView!
     @IBOutlet weak var pictoView: PictoView!
@@ -21,12 +18,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let url = Bundle.main.url(forResource: "index.html", withExtension: "", subdirectory: ""){
-            self.webView.loadFileURL(url, allowingReadAccessTo: url)
-        }
-        //self.webView.load(URLRequest(url: URL(string: "https://www.google.com/")!))
-        
         self.colorButton.addAction(.init{_ in
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
@@ -34,17 +25,36 @@ class ViewController: UIViewController {
     
     @IBAction func borderButtonTapped(_ sender: Any) {
         
-        if self.borderButton.flag{
+        if self.borderButton.flag {
             self.pictoView.allBorderWidth = 1
+            self.borderButton.tintColor = .white
+            self.borderButton.backgroundColor = .systemBlue
             self.borderButton.switchFlag()
         }else{
             self.pictoView.allBorderWidth = 0
+            self.borderButton.tintColor = .tintColor
+            self.borderButton.backgroundColor = .systemBackground
             self.borderButton.switchFlag()
         }
+        
     }
     
     @IBAction func moveButtonTapped(_ sender: Any) {
-        self.moveButton.switchFlag()
+        
+        if self.moveButton.flag {
+            self.editView.moveFlag = true
+            self.moveButton.tintColor = .white
+            self.moveButton.backgroundColor = .systemBlue
+            self.moveButton.switchFlag()
+            self.pictoView.layer.borderWidth = 1
+        }else{
+            self.editView.moveFlag = false
+            self.moveButton.tintColor = .tintColor
+            self.moveButton.backgroundColor = .systemBackground
+            self.moveButton.switchFlag()
+            self.pictoView.layer.borderWidth = 0
+        }
+        
     }
     
     @IBAction func imageButtonTapped(_ sender: Any) {

@@ -27,8 +27,16 @@ class EditView: UIView {
         
         let touchesLocation = touchesEvent.location(in: touchesView.superview)
         let targetCenter = touchesView.center
-        let angle = atan2(targetCenter.y-touchesLocation.y, targetCenter.x-touchesLocation.x)
-        touchesView.rotated(by: angle)
+        
+        if moveFlag {
+            let previousLocation = touchesEvent.previousLocation(in: touchesView.superview)
+            let point = CGPoint(x: touchesLocation.x-previousLocation.x, y: touchesLocation.y-previousLocation.y)
+            guard let pictoView = touchesView as? PictoView else {return}
+            pictoView.moved(point: point)
+        }else{
+            let angle = atan2(targetCenter.y-touchesLocation.y, targetCenter.x-touchesLocation.x)
+            touchesView.rotated(by: angle)
+        }
         
     }
     

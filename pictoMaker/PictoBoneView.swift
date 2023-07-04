@@ -61,13 +61,6 @@ class PictoBoneView: UIView {
         super.init(frame: CGRect(origin: point, size: size))
     }
     
-    init(point: CGPoint, size: CGSize, color: UIColor, cornerRadius: CGFloat, borderWidth: CGFloat) {
-        
-        super.init(frame: CGRect(origin: point, size: size))
-        self.pictoBoneViewInit(color: color, cornerRadius: cornerRadius, borderWidth: borderWidth)
-        
-    }
-    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
