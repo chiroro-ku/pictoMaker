@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -69,7 +70,7 @@
                                 </connections>
                             </button>
                             <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Lt-cb-Gm5">
-                                <rect key="frame" x="207.66666666666666" y="630.66666666666663" width="78.666666666666657" height="35"/>
+                                <rect key="frame" x="121.33333333333334" y="630.66666666666663" width="78.333333333333343" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -77,22 +78,52 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </colorWell>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5Q-Hu-nPJ" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                                <rect key="frame" x="207.66666666666666" y="630.66666666666663" width="78.666666666666657" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.up.and.down.and.arrow.left.and.right" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ufi-Wf-7Og"/>
+                                </connections>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgd-bs-uHI">
+                                <rect key="frame" x="0.0" y="58.999999999999986" width="393" height="170.66666666666663"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb6-2L-0bt"/>
+                            <constraint firstItem="Jgd-bs-uHI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MYb-qu-M78"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNb-HA-Iaj" secondAttribute="bottom" constant="20" id="QZj-hs-MGE"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SpE-ps-8Br"/>
+                            <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="Tk7-6l-A7L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fL-Kz-d2o" secondAttribute="trailing" constant="20" id="WzK-0i-vVA"/>
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="C5Q-Hu-nPJ" secondAttribute="height" id="hF3-aP-oRU"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="i7P-sm-TvZ"/>
+                            <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="iVT-2b-QSb"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="C5Q-Hu-nPJ" secondAttribute="width" id="jT0-Iz-egL"/>
+                            <constraint firstItem="6X8-Nr-VgB" firstAttribute="top" secondItem="Jgd-bs-uHI" secondAttribute="bottom" id="jc9-QC-28B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jgd-bs-uHI" secondAttribute="trailing" id="jcX-x4-jBG"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="l5e-ex-do8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zNb-HA-Iaj" secondAttribute="trailing" constant="20" id="lX8-pQ-Yp8"/>
+                            <constraint firstItem="Jgd-bs-uHI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oRk-pz-etr"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qeH-bz-Xqx"/>
-                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="rOW-ck-9dE"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="5Lt-cb-Gm5" secondAttribute="width" id="rdO-Ti-3yx"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ycq-H2-e3e"/>
                         </constraints>
@@ -102,23 +133,29 @@
                         <outlet property="colorButton" destination="5Lt-cb-Gm5" id="3EW-DL-GDP"/>
                         <outlet property="editView" destination="6X8-Nr-VgB" id="WIt-y2-XMq"/>
                         <outlet property="imageButton" destination="zNb-HA-Iaj" id="I7X-dd-6te"/>
+                        <outlet property="moveButton" destination="C5Q-Hu-nPJ" id="NQr-dO-jH5"/>
                         <outlet property="pictoView" destination="FTy-pe-v9t" id="LjS-rp-Ygo"/>
+                        <outlet property="webView" destination="Jgd-bs-uHI" id="tgq-Gf-GId"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="4"/>
+            <point key="canvasLocation" x="-320" y="138"/>
         </scene>
     </scenes>
     <designables>
         <designable name="4fL-Kz-d2o">
             <size key="intrinsicContentSize" width="49" height="34.333333333333336"/>
         </designable>
+        <designable name="C5Q-Hu-nPJ">
+            <size key="intrinsicContentSize" width="52.666666666666664" height="34.333333333333336"/>
+        </designable>
         <designable name="zNb-HA-Iaj">
             <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
         </designable>
     </designables>
     <resources>
+        <image name="arrow.up.and.down.and.arrow.left.and.right" catalog="system" width="128" height="122"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

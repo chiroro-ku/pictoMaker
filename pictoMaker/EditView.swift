@@ -9,6 +9,8 @@ import UIKit
 
 class EditView: UIView {
     
+    var moveFlag: Bool = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
