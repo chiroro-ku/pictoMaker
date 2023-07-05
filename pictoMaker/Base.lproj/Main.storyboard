@@ -84,8 +84,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-cM-HML" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="58.999999999999986" width="393" height="162.66666666666663"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hhT-cM-HML" secondAttribute="height" multiplier="131:20" id="HuD-HG-yaM"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-Mn-cfN" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
                                 <rect key="frame" x="121.33333333333334" y="630.66666666666663" width="78.333333333333343" height="35"/>
@@ -118,7 +121,6 @@
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="jTU-Mn-cfN" secondAttribute="height" id="BwV-6f-Wv6"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hhT-cM-HML" secondAttribute="trailing" id="Ec3-xc-KjN"/>
-                            <constraint firstItem="6X8-Nr-VgB" firstAttribute="top" secondItem="hhT-cM-HML" secondAttribute="bottom" constant="8" symbolic="YES" id="IFD-0p-AAt"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb6-2L-0bt"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="jTU-Mn-cfN" secondAttribute="trailing" constant="8" symbolic="YES" id="OIa-Pe-cWF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNb-HA-Iaj" secondAttribute="bottom" constant="20" id="QZj-hs-MGE"/>
