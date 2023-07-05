@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
@@ -16,11 +17,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var colorButton: UIColorWell!
     @IBOutlet weak var imageButton: Button!
     
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         self.colorButton.addAction(.init{_ in
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
+        
+        self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
     }
     
     @IBAction func borderButtonTapped(_ sender: Any) {
@@ -55,6 +67,10 @@ class ViewController: UIViewController {
             self.pictoView.layer.borderWidth = 0
         }
         
+    }
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
     }
     
     @IBAction func imageButtonTapped(_ sender: Any) {

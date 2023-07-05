@@ -69,15 +69,6 @@
                                     <action selector="moveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wz2-1g-lhd"/>
                                 </connections>
                             </button>
-                            <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Lt-cb-Gm5">
-                                <rect key="frame" x="121.33333333333334" y="630.66666666666663" width="78.333333333333343" height="35"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </colorWell>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNb-HA-Iaj" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
                                 <rect key="frame" x="255" y="763" width="118" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -92,32 +83,70 @@
                                     <action selector="imageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QBM-Bv-hYq"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-cM-HML" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="58.999999999999986" width="393" height="162.66666666666663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-Mn-cfN" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                                <rect key="frame" x="121.33333333333334" y="630.66666666666663" width="78.333333333333343" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.down.right.and.arrow.up.left" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rMD-Xy-HrG"/>
+                                </connections>
+                            </button>
+                            <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Lt-cb-Gm5">
+                                <rect key="frame" x="34.666666666666664" y="630.66666666666663" width="78.666666666666686" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </colorWell>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="5RG-hb-Xp6"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="jTU-Mn-cfN" secondAttribute="height" id="BwV-6f-Wv6"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hhT-cM-HML" secondAttribute="trailing" id="Ec3-xc-KjN"/>
+                            <constraint firstItem="6X8-Nr-VgB" firstAttribute="top" secondItem="hhT-cM-HML" secondAttribute="bottom" constant="8" symbolic="YES" id="IFD-0p-AAt"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb6-2L-0bt"/>
+                            <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="jTU-Mn-cfN" secondAttribute="trailing" constant="8" symbolic="YES" id="OIa-Pe-cWF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNb-HA-Iaj" secondAttribute="bottom" constant="20" id="QZj-hs-MGE"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SpE-ps-8Br"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="Tk7-6l-A7L"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="UHy-bf-4qB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fL-Kz-d2o" secondAttribute="trailing" constant="20" id="WzK-0i-vVA"/>
+                            <constraint firstItem="jTU-Mn-cfN" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="XHG-Iq-aTu"/>
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="gqt-2g-eai"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="jTU-Mn-cfN" secondAttribute="width" id="gwn-as-6zB"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="C5Q-Hu-nPJ" secondAttribute="height" id="hF3-aP-oRU"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="i7P-sm-TvZ"/>
-                            <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="iVT-2b-QSb"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="C5Q-Hu-nPJ" secondAttribute="width" id="jT0-Iz-egL"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="l5e-ex-do8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zNb-HA-Iaj" secondAttribute="trailing" constant="20" id="lX8-pQ-Yp8"/>
+                            <constraint firstItem="hhT-cM-HML" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nF9-lq-GLy"/>
+                            <constraint firstItem="hhT-cM-HML" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oxi-n2-RaU"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qeH-bz-Xqx"/>
+                            <constraint firstItem="jTU-Mn-cfN" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="rGb-md-N8z"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="5Lt-cb-Gm5" secondAttribute="width" id="rdO-Ti-3yx"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ycq-H2-e3e"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="hhT-cM-HML" id="15d-C1-1dW"/>
                         <outlet property="borderButton" destination="4fL-Kz-d2o" id="SN0-xZ-Zeb"/>
                         <outlet property="colorButton" destination="5Lt-cb-Gm5" id="3EW-DL-GDP"/>
                         <outlet property="editView" destination="6X8-Nr-VgB" id="WIt-y2-XMq"/>
@@ -138,11 +167,15 @@
         <designable name="C5Q-Hu-nPJ">
             <size key="intrinsicContentSize" width="52.666666666666664" height="34.333333333333336"/>
         </designable>
+        <designable name="jTU-Mn-cfN">
+            <size key="intrinsicContentSize" width="50.333333333333336" height="34.333333333333336"/>
+        </designable>
         <designable name="zNb-HA-Iaj">
             <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
         </designable>
     </designables>
     <resources>
+        <image name="arrow.down.right.and.arrow.up.left" catalog="system" width="128" height="117"/>
         <image name="arrow.up.and.down.and.arrow.left.and.right" catalog="system" width="128" height="122"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
