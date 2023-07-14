@@ -33,8 +33,8 @@ class ViewController: UIViewController {
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
         
-        bannerView.adUnitID = "ca-app-pub-9723575977675510/7668945026"
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        bannerView.adUnitID = ""
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
