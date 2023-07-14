@@ -42,6 +42,21 @@ class PictoBoneView: UIView {
         }
     }
     
+    var boneAlpha: CGFloat {
+        get{
+            self.alpha
+        }
+        
+        set{
+            self.alpha = newValue
+            if !subBones.isEmpty {
+                for subBone in subBones {
+                    subBone.boneAlpha = newValue
+                }
+            }
+        }
+    }
+    
     override var backgroundColor: UIColor?{
         get {
             super.backgroundColor
@@ -100,8 +115,8 @@ class PictoBoneView: UIView {
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        if !subBones.isEmpty {
-            for subBone in subBones {
+        if !self.subBones.isEmpty {
+            for subBone in self.subBones {
                 let hitPoint = subBone.convert(point, from: self)
                 
                 if let hitSubView = subBone.hitTest(hitPoint, with: event) {
@@ -119,6 +134,18 @@ class PictoBoneView: UIView {
         }
         
         return nil
+    }
+    
+    func allSubBones() -> [PictoBoneView] {
+        var allSubBones: [PictoBoneView] = [self]
+        for subBone in self.subBones {
+            if subBone.subBones.isEmpty {
+                allSubBones += [subBone]
+                continue
+            }
+            allSubBones += subBone.allSubBones()
+        }
+        return allSubBones
     }
     
     func rotated(by angle: CGFloat) {

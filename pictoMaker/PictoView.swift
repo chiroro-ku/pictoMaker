@@ -29,6 +29,16 @@ import UIKit
         }
     }
     
+    @IBInspectable var allAlpha: CGFloat {
+        get{
+            self.boneAlpha
+        }
+        
+        set{
+            self.boneAlpha = newValue
+        }
+    }
+    
     @IBInspectable var allColor: UIColor {
         get{
             self.backgroundColor ?? .green
@@ -110,5 +120,29 @@ import UIKit
         center.x += point.x
         center.y += point.y
         self.center = center
+    }
+    
+    func toAngleData() -> String {
+        let bones = self.allSubBones()
+        var angleDatas: [String] = []
+        for bone in bones {
+            angleDatas += ["\(bone.angle)"]
+        }
+        let angleData = angleDatas.joined(separator: ",")
+        return angleData
+    }
+    
+    func loadAngleData(data: String) {
+        let angleDatas :[String] = data.components(separatedBy: ",")
+        self.rotated(by: CGFloat(Double(angleDatas[0]) ?? 0.0))
+        self.face.rotated(by: CGFloat(Double(angleDatas[1]) ?? 0.0))
+        self.rightUpperArm.rotated(by: CGFloat(Double(angleDatas[2]) ?? 0.0))
+        self.rightArm.rotated(by: CGFloat(Double(angleDatas[3]) ?? 0.0))
+        self.leftUpperArm.rotated(by: CGFloat(Double(angleDatas[4]) ?? 0.0))
+        self.leftArm.rotated(by: CGFloat(Double(angleDatas[5]) ?? 0.0))
+        self.rightUpperLeg.rotated(by: CGFloat(Double(angleDatas[6]) ?? 0.0))
+        self.rightLeg.rotated(by: CGFloat(Double(angleDatas[7]) ?? 0.0))
+        self.leftUpperLeg.rotated(by: CGFloat(Double(angleDatas[8]) ?? 0.0))
+        self.leftLeg.rotated(by: CGFloat(Double(angleDatas[9]) ?? 0.0))
     }
 }

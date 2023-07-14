@@ -10,6 +10,7 @@ import UIKit
 class EditView: UIView {
     
     var moveFlag: Bool = false
+    var object: UIView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +32,7 @@ class EditView: UIView {
         if moveFlag {
             let previousLocation = touchesEvent.previousLocation(in: touchesView.superview)
             let point = CGPoint(x: touchesLocation.x-previousLocation.x, y: touchesLocation.y-previousLocation.y)
-            guard let pictoView = touchesView as? PictoView else {return}
+            guard let pictoView = self.object as? PictoView else {return}
             pictoView.moved(point: point)
         }else{
             let angle = atan2(targetCenter.y-touchesLocation.y, targetCenter.x-touchesLocation.x)
@@ -42,6 +43,7 @@ class EditView: UIView {
     
     func toImage(_ transparent: Bool = true) -> UIImage?{
         
+        let color = self.backgroundColor
         if transparent {
             self.backgroundColor = .clear
         }
@@ -60,7 +62,7 @@ class EditView: UIView {
             }
         }
         
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = color
         
         return image
         

@@ -33,6 +33,9 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="allColor">
                                                 <color key="value" systemColor="systemGreenColor"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="allAlpha">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -132,7 +135,6 @@
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
-                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="gqt-2g-eai"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="jTU-Mn-cfN" secondAttribute="width" id="gwn-as-6zB"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="C5Q-Hu-nPJ" secondAttribute="height" id="hF3-aP-oRU"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="i7P-sm-TvZ"/>
@@ -159,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-320" y="138"/>
+            <point key="canvasLocation" x="-320.28985507246381" y="137.94642857142856"/>
         </scene>
     </scenes>
     <designables>
