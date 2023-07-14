@@ -33,8 +33,8 @@ class ViewController: UIViewController {
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
         
-//        bannerView.adUnitID = ""
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-9723575977675510/7668945026"
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
@@ -81,6 +81,12 @@ class ViewController: UIViewController {
         self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
     }
     
+    @IBAction func imageButtonTapped(_ sender: Any) {
+        
+        self.saveImage()
+
+    }
+    
     func saveImage(){
         guard let uiImage = self.editView.toImage() else {
             self.saveImageError()
@@ -90,12 +96,7 @@ class ViewController: UIViewController {
         self.imageButton.setTitle("成功", for: .normal)
     }
     
-    @IBAction func imageButtonTapped(_ sender: Any) {
-        
-        
-        self.saveImage()
-        
-        /*
+    func saveImageWithData(){
         
         guard let uiImage = self.editView.toImage() else {
             self.saveImageError()
@@ -106,12 +107,15 @@ class ViewController: UIViewController {
             self.saveImageError()
             return
         }
+        
         guard let cgImageSource = CGImageSourceCreateWithData(imageData as CFData, nil) else {
             self.saveImageError()
             return
         }
-        //        var metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any]
+        
         var metadata = CGImageSourceCopyProperties(cgImageSource, nil) as? [String: Any]
+        metadata?[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
+        
         /*
          var locationDictionary = metadata?[kCGImagePropertyGPSDictionary as String] as? [String: Any]
          locationDictionary?[kCGImagePropertyGPSLatitude as String] = "0.000"
@@ -129,33 +133,26 @@ class ViewController: UIViewController {
          locationDictionary?[kCGImagePropertyExifUserComment as String] = self.angleData()
          metadata?[kCGImagePropertyGPSDictionary as String] = locationDictionary
          */
-        metadata?[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
+        
         guard let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil) else {
             self.saveImageError()
             return
         }
+        
         let tmpName = UUID().uuidString
         let tmpUrl = NSURL.fileURL(withPath: NSTemporaryDirectory() + tmpName + ".png")
+        
         if let destination = CGImageDestinationCreateWithURL(tmpUrl as CFURL, UTType.png.identifier as CFString, 1, nil) {
-            guard let data = metadata else {
-                self.saveImageError()
-                return
-            }
-            CGImageDestinationAddImage(destination, cgImage, data as CFDictionary)
+            
+            CGImageDestinationAddImage(destination, cgImage, metadata! as CFDictionary)
             CGImageDestinationFinalize(destination)
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: tmpUrl)
             }, completionHandler: { success, error in
-                //                print("performChanges success: \(success), error: \(String(describing: error?.localizedDescription))")
+                print("performChanges success: \(success), error: \(String(describing: error?.localizedDescription))")
             })
         }
         
-        
-        
-        
-        /*
-         UIImageWriteToSavedPhotosAlbum(uiImage, self, nil, nil)
-         */
         self.imageButton.setTitle("成功", for: .normal)
         
         /*
@@ -169,9 +166,6 @@ class ViewController: UIViewController {
          }
          let thumbnail = UIImage(cgImage: imageReference)
          */
-         
-         
-         */
     }
     
     func saveImageError() {
@@ -180,25 +174,6 @@ class ViewController: UIViewController {
     }
     
     func loadImage(){
-        /*
-        //あとからPHAssetとして取得する場合は引数を指定。
-        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-        //同時写真選択数。0で無制限
-        config.selectionLimit = 1
-        config.filter = PHPickerFilter.images
-        
-        let pickerViewController = PHPickerViewController(configuration: config)
-        pickerViewController.delegate = self
-        
-        self.present(pickerViewController, animated: true, completion: nil)
-        /*
-         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-         imagePicker.sourceType = .photoLibrary
-         self.present(imagePicker, animated: true, completion: nil)
-         }else{
-         print("Photo Library not available.")
-         }
-         */
-         */
+
     }
 }
