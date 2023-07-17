@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import GoogleMobileAds
-import Photos
 import PhotosUI
+
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageButton: Button!
     
     @IBOutlet weak var bannerView: GADBannerView!
+    
+    var selection = [String: PHPickerResult]()
+    var selectedAssetIdentifiers = [String]()
+    var selectedAssetIdentifierIterator: IndexingIterator<[String]>?
     
     override func viewDidLoad() {
         
@@ -33,7 +37,7 @@ class ViewController: UIViewController {
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
         
-//        bannerView.adUnitID = ""
+        //        bannerView.adUnitID = ""
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -83,8 +87,8 @@ class ViewController: UIViewController {
     
     @IBAction func imageButtonTapped(_ sender: Any) {
         
-        self.saveImage()
-
+        self.saveImageWithData()
+        
     }
     
     func saveImage(){
@@ -98,41 +102,22 @@ class ViewController: UIViewController {
     
     func saveImageWithData(){
         
-        guard let uiImage = self.editView.toImage() else {
+        guard let uiImage = self.editView.toImage(),
+              let imageData = uiImage.pngData(),
+              let cgImageSource = CGImageSourceCreateWithData(imageData as CFData, nil),
+              var metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any],
+              var exifDictionary = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else {
             self.saveImageError()
             return
         }
         
-        guard let imageData = uiImage.pngData() else {
-            self.saveImageError()
-            return
-        }
+//        print(exifDictionary)
         
-        guard let cgImageSource = CGImageSourceCreateWithData(imageData as CFData, nil) else {
-            self.saveImageError()
-            return
-        }
+//        exifDictionary.updateValue(kCGImagePropertyExifUserComment as String, forKey: self.pictoView.toAngleData())
+        exifDictionary[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
+        metadata[kCGImagePropertyExifDictionary as String] = exifDictionary
         
-        var metadata = CGImageSourceCopyProperties(cgImageSource, nil) as? [String: Any]
-        metadata?[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
-        
-        /*
-         var locationDictionary = metadata?[kCGImagePropertyGPSDictionary as String] as? [String: Any]
-         locationDictionary?[kCGImagePropertyGPSLatitude as String] = "0.000"
-         locationDictionary?[kCGImagePropertyGPSLongitude as String] = "0.000"
-         */
-        /*
-         var locationDictionary = metadata?[kCGImagePropertyExifUserComment as String] as? [String: Any]
-         if locationDictionary == nil {
-         
-         self.saveImageError()
-         return
-         }else{
-         print(locationDictionary)
-         }
-         locationDictionary?[kCGImagePropertyExifUserComment as String] = self.angleData()
-         metadata?[kCGImagePropertyGPSDictionary as String] = locationDictionary
-         */
+//        print(exifDictionary)
         
         guard let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil) else {
             self.saveImageError()
@@ -144,7 +129,7 @@ class ViewController: UIViewController {
         
         if let destination = CGImageDestinationCreateWithURL(tmpUrl as CFURL, UTType.png.identifier as CFString, 1, nil) {
             
-            CGImageDestinationAddImage(destination, cgImage, metadata! as CFDictionary)
+            CGImageDestinationAddImage(destination, cgImage, metadata as CFDictionary)
             CGImageDestinationFinalize(destination)
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: tmpUrl)
@@ -173,7 +158,124 @@ class ViewController: UIViewController {
         return
     }
     
-    func loadImage(){
-
+    @IBAction func loadImageButton(_ sender: Any) {
+        self.loadImage()
     }
+    
+    func loadImage(){
+        let photoLibrary = PHPhotoLibrary.shared()
+        var configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
+    }
+}
+
+extension ViewController: PHPickerViewControllerDelegate {
+    
+    /*
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+
+        let assetIds = results.compactMap(\.assetIdentifier)
+        let result = PHAsset.fetchAssets(withLocalIdentifiers: assetIds, options: .none)
+        let options = PHContentEditingInputRequestOptions()
+        options.isNetworkAccessAllowed = true
+
+        guard let firstObject = result.firstObject else { return }
+        
+        firstObject.requestContentEditingInput(with: options) { input, _ in
+        /*
+        firstObject.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, _) -> Void in
+            
+            let inputUrl = contentEditingInput?.fullSizeImageURL
+            let inputImage = CoreImage.CIImage(contentsOf: inputUrl!)
+            let exif:NSDictionary = inputImage!.properties["{Exif}"] as! NSDictionary
+            print(exif.object(forKey: "UserComment") ?? "error")
+            print(exif)
+         */
+            
+            
+            guard let inputUrl = input?.fullSizeImageURL, // 選択されたImageのURL
+                  let cgImageSource = CGImageSourceCreateWithURL(inputUrl as CFURL, nil), // CGImageSourceを作成
+                  let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil), // 書き込み用のCGImageを作成
+                  var metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any], // metadataを取得
+                  var locationDic = metadata[kCGImagePropertyGPSDictionary as String] as? [String: Any] else { return } // Locationのmetadataを取り出す
+            
+            guard var exifDic = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else { return }
+            
+//            print(metadata[kCGImagePropertyExifLensMake as String] ?? "error")
+//            guard var exifDic = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else { return }
+//            print(exifDic)
+//            print(metadata)
+            
+            print(locationDic[kCGImagePropertyGPSLatitude as String] ?? "error")
+            print(locationDic[kCGImagePropertyGPSLongitude as String] ?? "error")
+            print(exifDic[kCGImagePropertyExifUserComment as String] ?? "error")
+
+            /*
+            // 適当なロケーションに上書き
+            locationDic[kCGImagePropertyGPSLatitude as String] = "35.70220"
+            locationDic[kCGImagePropertyGPSLongitude as String] = "139.81530"
+            exifDic[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
+
+            // 再度metadataに上書きする
+            metadata[kCGImagePropertyGPSDictionary as String] = locationDic
+//            metadata.updateValue("PictoAngleData", forKey: self.pictoView.toAngleData())
+            metadata[kCGImagePropertyExifDictionary as String] = exifDic
+             */
+            
+//            print(metadata)
+        
+//            // 適当なURLを指定
+//            let tmpName = UUID().uuidString
+//            let tmpUrl = NSURL.fileURL(withPath: NSTemporaryDirectory() + tmpName + ".jpeg")
+//            if let destination = CGImageDestinationCreateWithURL(tmpUrl as CFURL, UTType.jpeg.identifier as CFString, 1, nil) {
+//                CGImageDestinationAddImage(destination, cgImage, metadata as CFDictionary)
+//                CGImageDestinationFinalize(destination)
+//
+//                PHPhotoLibrary.shared().performChanges({
+//                    // アルバムに書き込み
+//                    PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: tmpUrl)
+//                }, completionHandler: { success, error in
+//                    print("performChanges success: \(success), error: \(String(describing: error?.localizedDescription))")
+//                })
+//            }
+        }
+    }
+     */
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        picker.dismiss(animated: true)
+        
+        guard let itemProvider = results.first?.itemProvider else {
+            self.saveImageError()
+            return
+        }
+        guard let typeIdentifer = itemProvider.registeredTypeIdentifiers.first else {
+            self.saveImageError()
+            return
+        }
+        if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+            itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
+                
+                guard let data = data,
+                      let cgImageSource = CGImageSourceCreateWithData(data as CFData, nil),
+                      let metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any],
+                      let exifDictionary = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any],
+                      let angleData = exifDictionary[kCGImagePropertyExifUserComment as String] as? String else {
+                    self.saveImageError()
+                    return
+                }
+                
+                self.pictoView.loadAngleData(data: angleData)
+
+            }
+        }
+        
+    }
+      
 }

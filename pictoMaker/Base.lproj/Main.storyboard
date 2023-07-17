@@ -116,11 +116,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </colorWell>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drG-PG-gdv" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                                <rect key="frame" x="129.33333333333334" y="763" width="117.66666666666666" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="読み込む"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vq3-h8-iSO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="5RG-hb-Xp6"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="height" secondItem="drG-PG-gdv" secondAttribute="height" id="Akn-bV-sCO"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="jTU-Mn-cfN" secondAttribute="height" id="BwV-6f-Wv6"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hhT-cM-HML" secondAttribute="trailing" id="Ec3-xc-KjN"/>
@@ -133,11 +148,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fL-Kz-d2o" secondAttribute="trailing" constant="20" id="WzK-0i-vVA"/>
                             <constraint firstItem="jTU-Mn-cfN" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="XHG-Iq-aTu"/>
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="drG-PG-gdv" secondAttribute="width" id="aOh-VA-mg4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="jTU-Mn-cfN" secondAttribute="width" id="gwn-as-6zB"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="C5Q-Hu-nPJ" secondAttribute="height" id="hF3-aP-oRU"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="i7P-sm-TvZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="drG-PG-gdv" secondAttribute="bottom" constant="20" id="j98-H8-7tK"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="C5Q-Hu-nPJ" secondAttribute="width" id="jT0-Iz-egL"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="l5e-ex-do8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zNb-HA-Iaj" secondAttribute="trailing" constant="20" id="lX8-pQ-Yp8"/>
@@ -146,6 +163,7 @@
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qeH-bz-Xqx"/>
                             <constraint firstItem="jTU-Mn-cfN" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="rGb-md-N8z"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="5Lt-cb-Gm5" secondAttribute="width" id="rdO-Ti-3yx"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="leading" secondItem="drG-PG-gdv" secondAttribute="trailing" constant="8" symbolic="YES" id="wZT-UG-9Bf"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ycq-H2-e3e"/>
                         </constraints>
                     </view>
@@ -170,6 +188,9 @@
         </designable>
         <designable name="C5Q-Hu-nPJ">
             <size key="intrinsicContentSize" width="52.666666666666664" height="34.333333333333336"/>
+        </designable>
+        <designable name="drG-PG-gdv">
+            <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
         </designable>
         <designable name="jTU-Mn-cfN">
             <size key="intrinsicContentSize" width="50.333333333333336" height="34.333333333333336"/>
