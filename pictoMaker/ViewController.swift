@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
         }, for: .allEvents)
         
-        //        bannerView.adUnitID = ""
+//        bannerView.adUnitID = ""
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
             })
             
         }
-
+        
     }
     
     func saveImageError() {
@@ -180,7 +180,7 @@ extension ViewController: PHPickerViewControllerDelegate {
             self.loadImageError()
             return
         }
-
+        
         if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
             itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
                 
@@ -194,12 +194,12 @@ extension ViewController: PHPickerViewControllerDelegate {
                 }
                 
                 self.pictoView.loadAngleData(data: angleData)
-
+                
             }
         }
         
     }
-      
+    
 }
 
 extension Button {
