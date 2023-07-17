@@ -16,8 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var pictoView: PictoView!
     @IBOutlet weak var borderButton: Button!
     @IBOutlet weak var moveButton: Button!
+    @IBOutlet weak var resetButton: Button!
     @IBOutlet weak var colorButton: UIColorWell!
-    @IBOutlet weak var imageButton: Button!
+    @IBOutlet weak var saveButton: Button!
+    @IBOutlet weak var loadButton: Button!
     
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -85,19 +87,21 @@ class ViewController: UIViewController {
         self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
     }
     
-    @IBAction func imageButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonTapped(_ sender: Any) {
         
         self.saveImageWithData()
+        self.saveButton.setTitle("成功", for: .normal)
         
     }
     
     func saveImage(){
+        
         guard let uiImage = self.editView.toImage() else {
             self.saveImageError()
             return
         }
         UIImageWriteToSavedPhotosAlbum(uiImage, self, nil, nil)
-        self.imageButton.setTitle("成功", for: .normal)
+        
     }
     
     func saveImageWithData(){
@@ -105,24 +109,15 @@ class ViewController: UIViewController {
         guard let uiImage = self.editView.toImage(),
               let imageData = uiImage.pngData(),
               let cgImageSource = CGImageSourceCreateWithData(imageData as CFData, nil),
+              let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil),
               var metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any],
               var exifDictionary = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else {
             self.saveImageError()
             return
         }
         
-//        print(exifDictionary)
-        
-//        exifDictionary.updateValue(kCGImagePropertyExifUserComment as String, forKey: self.pictoView.toAngleData())
         exifDictionary[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
         metadata[kCGImagePropertyExifDictionary as String] = exifDictionary
-        
-//        print(exifDictionary)
-        
-        guard let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil) else {
-            self.saveImageError()
-            return
-        }
         
         let tmpName = UUID().uuidString
         let tmpUrl = NSURL.fileURL(withPath: NSTemporaryDirectory() + tmpName + ".png")
@@ -136,33 +131,26 @@ class ViewController: UIViewController {
             }, completionHandler: { success, error in
                 print("performChanges success: \(success), error: \(String(describing: error?.localizedDescription))")
             })
+            
         }
-        
-        self.imageButton.setTitle("成功", for: .normal)
-        
-        /*
-         let options = [
-         kCGImageSourceCreateThumbnailWithTransform: true,
-         kCGImageSourceCreateThumbnailFromImageAlways: true,
-         kCGImageSourceThumbnailMaxPixelSize: 300] as [CFString : Any] as CFDictionary
-         guard let imageReference = CGImageSourceCreateThumbnailAtIndex(cgImageSource, 0, options) else {
-         self.saveImageError()
-         return
-         }
-         let thumbnail = UIImage(cgImage: imageReference)
-         */
+
     }
     
     func saveImageError() {
-        self.imageButton.setTitle("エラー", for: .normal)
+        
+        self.saveButton.setTitle("エラー", for: .normal)
         return
+        
     }
     
     @IBAction func loadImageButton(_ sender: Any) {
+        
         self.loadImage()
+        
     }
     
     func loadImage(){
+        
         let photoLibrary = PHPhotoLibrary.shared()
         var configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
         configuration.filter = .images
@@ -170,95 +158,29 @@ class ViewController: UIViewController {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func loadImageError() {
+        
+        DispatchQueue.main.async {
+            self.loadButton.setTitle("エラー", for: .normal)
+        }
+        
     }
 }
 
 extension ViewController: PHPickerViewControllerDelegate {
-    
-    /*
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true)
-
-        let assetIds = results.compactMap(\.assetIdentifier)
-        let result = PHAsset.fetchAssets(withLocalIdentifiers: assetIds, options: .none)
-        let options = PHContentEditingInputRequestOptions()
-        options.isNetworkAccessAllowed = true
-
-        guard let firstObject = result.firstObject else { return }
-        
-        firstObject.requestContentEditingInput(with: options) { input, _ in
-        /*
-        firstObject.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, _) -> Void in
-            
-            let inputUrl = contentEditingInput?.fullSizeImageURL
-            let inputImage = CoreImage.CIImage(contentsOf: inputUrl!)
-            let exif:NSDictionary = inputImage!.properties["{Exif}"] as! NSDictionary
-            print(exif.object(forKey: "UserComment") ?? "error")
-            print(exif)
-         */
-            
-            
-            guard let inputUrl = input?.fullSizeImageURL, // 選択されたImageのURL
-                  let cgImageSource = CGImageSourceCreateWithURL(inputUrl as CFURL, nil), // CGImageSourceを作成
-                  let cgImage = CGImageSourceCreateImageAtIndex(cgImageSource, 0, nil), // 書き込み用のCGImageを作成
-                  var metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any], // metadataを取得
-                  var locationDic = metadata[kCGImagePropertyGPSDictionary as String] as? [String: Any] else { return } // Locationのmetadataを取り出す
-            
-            guard var exifDic = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else { return }
-            
-//            print(metadata[kCGImagePropertyExifLensMake as String] ?? "error")
-//            guard var exifDic = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any] else { return }
-//            print(exifDic)
-//            print(metadata)
-            
-            print(locationDic[kCGImagePropertyGPSLatitude as String] ?? "error")
-            print(locationDic[kCGImagePropertyGPSLongitude as String] ?? "error")
-            print(exifDic[kCGImagePropertyExifUserComment as String] ?? "error")
-
-            /*
-            // 適当なロケーションに上書き
-            locationDic[kCGImagePropertyGPSLatitude as String] = "35.70220"
-            locationDic[kCGImagePropertyGPSLongitude as String] = "139.81530"
-            exifDic[kCGImagePropertyExifUserComment as String] = self.pictoView.toAngleData()
-
-            // 再度metadataに上書きする
-            metadata[kCGImagePropertyGPSDictionary as String] = locationDic
-//            metadata.updateValue("PictoAngleData", forKey: self.pictoView.toAngleData())
-            metadata[kCGImagePropertyExifDictionary as String] = exifDic
-             */
-            
-//            print(metadata)
-        
-//            // 適当なURLを指定
-//            let tmpName = UUID().uuidString
-//            let tmpUrl = NSURL.fileURL(withPath: NSTemporaryDirectory() + tmpName + ".jpeg")
-//            if let destination = CGImageDestinationCreateWithURL(tmpUrl as CFURL, UTType.jpeg.identifier as CFString, 1, nil) {
-//                CGImageDestinationAddImage(destination, cgImage, metadata as CFDictionary)
-//                CGImageDestinationFinalize(destination)
-//
-//                PHPhotoLibrary.shared().performChanges({
-//                    // アルバムに書き込み
-//                    PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: tmpUrl)
-//                }, completionHandler: { success, error in
-//                    print("performChanges success: \(success), error: \(String(describing: error?.localizedDescription))")
-//                })
-//            }
-        }
-    }
-     */
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
         picker.dismiss(animated: true)
         
         guard let itemProvider = results.first?.itemProvider else {
-            self.saveImageError()
+            self.loadImageError()
             return
         }
-        guard let typeIdentifer = itemProvider.registeredTypeIdentifiers.first else {
-            self.saveImageError()
-            return
-        }
+
         if itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
             itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
                 
@@ -267,7 +189,7 @@ extension ViewController: PHPickerViewControllerDelegate {
                       let metadata = CGImageSourceCopyPropertiesAtIndex(cgImageSource, 0, nil) as? [String: Any],
                       let exifDictionary = metadata[kCGImagePropertyExifDictionary as String] as? [String: Any],
                       let angleData = exifDictionary[kCGImagePropertyExifUserComment as String] as? String else {
-                    self.saveImageError()
+                    self.loadImageError()
                     return
                 }
                 
@@ -278,4 +200,33 @@ extension ViewController: PHPickerViewControllerDelegate {
         
     }
       
+}
+
+extension Button {
+    func saveImage(_ transparent: Bool = true) {
+        
+        let color = self.backgroundColor
+        if transparent {
+            self.backgroundColor = .clear
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0)
+        guard let context = UIGraphicsGetCurrentContext() else{
+            return
+        }
+        layer.render(in: context)
+        guard var image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
+        
+        if transparent {
+            self.backgroundColor = color
+        }
+        
+        guard let data = image.pngData(),
+              let newImage = UIImage(data: data) else { return }
+        image = newImage
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+        
+    }
 }
