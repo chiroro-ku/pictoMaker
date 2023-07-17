@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="pictoMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6X8-Nr-VgB" customClass="EditView" customModule="pictoMaker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="229.66666666666663" width="393" height="393"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTy-pe-v9t" customClass="PictoView" customModule="pictoMaker" customModuleProvider="target">
                                         <rect key="frame" x="166" y="137" width="60" height="120"/>
@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fL-Kz-d2o" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
-                                <rect key="frame" x="294.33333333333331" y="630.66666666666663" width="78.666666666666686" height="34"/>
+                                <rect key="frame" x="311.33333333333331" y="663" width="82.666666666666686" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5Q-Hu-nPJ" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
-                                <rect key="frame" x="207.66666666666666" y="630.66666666666663" width="78.666666666666657" height="34"/>
+                                <rect key="frame" x="220.33333333333337" y="663" width="83" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.up.and.down.and.arrow.left.and.right" catalog="system"/>
@@ -73,7 +73,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNb-HA-Iaj" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
-                                <rect key="frame" x="255" y="763" width="118" height="35"/>
+                                <rect key="frame" x="269.66666666666669" y="807" width="124.33333333333331" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="保存する"/>
@@ -83,18 +83,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="imageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QBM-Bv-hYq"/>
+                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QBM-Bv-hYq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-cM-HML" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="63.333333333333343"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hhT-cM-HML" secondAttribute="height" multiplier="131:20" id="HS3-6O-63F"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-Mn-cfN" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
-                                <rect key="frame" x="121.33333333333334" y="630.66666666666663" width="78.333333333333343" height="34"/>
+                                <rect key="frame" x="129.66666666666666" y="663" width="82.666666666666657" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.down.right.and.arrow.up.left" catalog="system"/>
@@ -108,7 +108,7 @@
                                 </connections>
                             </button>
                             <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Lt-cb-Gm5">
-                                <rect key="frame" x="34.666666666666664" y="630.66666666666663" width="78.666666666666686" height="34"/>
+                                <rect key="frame" x="38.666666666666657" y="663" width="83" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -116,16 +116,48 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </colorWell>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drG-PG-gdv" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                                <rect key="frame" x="137.66666666666666" y="807" width="123.99999999999997" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="読み込む"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vq3-h8-iSO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Sy-Oqx" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="807" width="82.666666666666671" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="使い方"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Fel-CM-p3v" kind="presentation" id="y8V-N8-cVa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstItem="drG-PG-gdv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VXG-Sy-Oqx" secondAttribute="trailing" constant="8" symbolic="YES" id="3mM-D2-bT9"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="height" secondItem="VXG-Sy-Oqx" secondAttribute="height" id="4dE-Gm-I3f"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="5RG-hb-Xp6"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="height" secondItem="drG-PG-gdv" secondAttribute="height" id="Akn-bV-sCO"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="jTU-Mn-cfN" secondAttribute="height" id="BwV-6f-Wv6"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hhT-cM-HML" secondAttribute="trailing" id="Ec3-xc-KjN"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb6-2L-0bt"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="jTU-Mn-cfN" secondAttribute="trailing" constant="8" symbolic="YES" id="OIa-Pe-cWF"/>
+                            <constraint firstItem="VXG-Sy-Oqx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QKE-8N-Ery"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNb-HA-Iaj" secondAttribute="bottom" constant="20" id="QZj-hs-MGE"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SpE-ps-8Br"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="Tk7-6l-A7L"/>
@@ -133,11 +165,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fL-Kz-d2o" secondAttribute="trailing" constant="20" id="WzK-0i-vVA"/>
                             <constraint firstItem="jTU-Mn-cfN" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="XHG-Iq-aTu"/>
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="drG-PG-gdv" secondAttribute="width" id="aOh-VA-mg4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
+                            <constraint firstItem="VXG-Sy-Oqx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="fIF-bG-ack"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="jTU-Mn-cfN" secondAttribute="width" id="gwn-as-6zB"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="C5Q-Hu-nPJ" secondAttribute="height" id="hF3-aP-oRU"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="i7P-sm-TvZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="drG-PG-gdv" secondAttribute="bottom" constant="20" id="j98-H8-7tK"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="C5Q-Hu-nPJ" secondAttribute="width" id="jT0-Iz-egL"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="l5e-ex-do8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zNb-HA-Iaj" secondAttribute="trailing" constant="20" id="lX8-pQ-Yp8"/>
@@ -146,6 +181,8 @@
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qeH-bz-Xqx"/>
                             <constraint firstItem="jTU-Mn-cfN" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="rGb-md-N8z"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="width" secondItem="5Lt-cb-Gm5" secondAttribute="width" id="rdO-Ti-3yx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VXG-Sy-Oqx" secondAttribute="bottom" constant="20" id="syd-FQ-75g"/>
+                            <constraint firstItem="zNb-HA-Iaj" firstAttribute="leading" secondItem="drG-PG-gdv" secondAttribute="trailing" constant="8" symbolic="YES" id="wZT-UG-9Bf"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ycq-H2-e3e"/>
                         </constraints>
                     </view>
@@ -154,14 +191,51 @@
                         <outlet property="borderButton" destination="4fL-Kz-d2o" id="SN0-xZ-Zeb"/>
                         <outlet property="colorButton" destination="5Lt-cb-Gm5" id="3EW-DL-GDP"/>
                         <outlet property="editView" destination="6X8-Nr-VgB" id="WIt-y2-XMq"/>
-                        <outlet property="imageButton" destination="zNb-HA-Iaj" id="I7X-dd-6te"/>
+                        <outlet property="loadButton" destination="drG-PG-gdv" id="yyh-8Q-3ZD"/>
                         <outlet property="moveButton" destination="C5Q-Hu-nPJ" id="NQr-dO-jH5"/>
                         <outlet property="pictoView" destination="FTy-pe-v9t" id="LjS-rp-Ygo"/>
+                        <outlet property="resetButton" destination="jTU-Mn-cfN" id="zbJ-eg-OhI"/>
+                        <outlet property="saveButton" destination="zNb-HA-Iaj" id="I7X-dd-6te"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-320.28985507246381" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-828" y="204"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NYD-NW-tGo">
+            <objects>
+                <viewController id="Fel-CM-p3v" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4df-8Q-g70">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="2FN-XT-pD2">
+                                <rect key="frame" x="10" y="54.333333333333314" width="394" height="831.66666666666674"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd9-Dg-cZ4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44.333333333333336"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BnY-5E-7WA"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="Fd9-Dg-cZ4" firstAttribute="leading" secondItem="BnY-5E-7WA" secondAttribute="leading" id="1JQ-kh-vPq"/>
+                            <constraint firstItem="BnY-5E-7WA" firstAttribute="trailing" secondItem="Fd9-Dg-cZ4" secondAttribute="trailing" id="3sK-FU-0vJ"/>
+                            <constraint firstItem="Fd9-Dg-cZ4" firstAttribute="top" secondItem="BnY-5E-7WA" secondAttribute="top" id="5Gs-0G-AYZ"/>
+                            <constraint firstItem="2FN-XT-pD2" firstAttribute="top" secondItem="Fd9-Dg-cZ4" secondAttribute="bottom" constant="10" id="7Ot-6Y-fSN"/>
+                            <constraint firstItem="2FN-XT-pD2" firstAttribute="bottom" secondItem="BnY-5E-7WA" secondAttribute="bottom" id="Yud-uW-3Ih"/>
+                            <constraint firstItem="Fd9-Dg-cZ4" firstAttribute="height" secondItem="4df-8Q-g70" secondAttribute="height" multiplier="0.05" id="c2R-vp-mSS"/>
+                            <constraint firstItem="BnY-5E-7WA" firstAttribute="trailing" secondItem="2FN-XT-pD2" secondAttribute="trailing" constant="10" id="qJG-TZ-sAl"/>
+                            <constraint firstItem="2FN-XT-pD2" firstAttribute="leading" secondItem="BnY-5E-7WA" secondAttribute="leading" constant="10" id="yYi-0g-RkL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Ua-cp-fyH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PiQ-Jf-WPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-103.05343511450381" y="203.52112676056339"/>
         </scene>
     </scenes>
     <designables>
@@ -170,6 +244,12 @@
         </designable>
         <designable name="C5Q-Hu-nPJ">
             <size key="intrinsicContentSize" width="52.666666666666664" height="34.333333333333336"/>
+        </designable>
+        <designable name="VXG-Sy-Oqx">
+            <size key="intrinsicContentSize" width="76" height="34.333333333333336"/>
+        </designable>
+        <designable name="drG-PG-gdv">
+            <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
         </designable>
         <designable name="jTU-Mn-cfN">
             <size key="intrinsicContentSize" width="50.333333333333336" height="34.333333333333336"/>
@@ -181,6 +261,7 @@
     <resources>
         <image name="arrow.down.right.and.arrow.up.left" catalog="system" width="128" height="117"/>
         <image name="arrow.up.and.down.and.arrow.left.and.right" catalog="system" width="128" height="122"/>
+        <image name="help" width="1086" height="2090"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

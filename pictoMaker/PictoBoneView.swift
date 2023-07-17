@@ -152,7 +152,8 @@ class PictoBoneView: UIView {
         
         let rotationAngle = -(self.angle - angle)
         self.angle = angle
-        self.transform = self.transform.rotated(by: rotationAngle)
-        
+        DispatchQueue.main.async {
+            self.transform = self.transform.rotated(by: rotationAngle)
+        }
     }
 }
