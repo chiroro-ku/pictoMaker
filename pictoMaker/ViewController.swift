@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-import GoogleMobileAds
+//import GoogleMobileAds
 
 class ViewController: UIViewController {
     
@@ -21,11 +21,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var saveButton: Button!
     @IBOutlet weak var loadButton: Button!
     
-    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var label: UILabel!
+    
+//    @IBOutlet weak var bannerView: GADBannerView!
     
     var selection = [String: PHPickerResult]()
     var selectedAssetIdentifiers = [String]()
     var selectedAssetIdentifierIterator: IndexingIterator<[String]>?
+    
+    enum LabelText: String {
+        case normal = "ぐるぐる回転できるよ。"
+        case border = "パーツの枠を可視化させるよ。"
+        case move = "胴体を掴んで移動できるよ。"
+        case reset = "僕を中央に移動させるよ。"
+        case color = "色が変わっちゃった。"
+        case save = "はい、チーズ。…保存できたよ。"
+        case saveError = "はい、チーズ。…失敗したみたい。"
+        case load = "ポーズを読み込んだよ。"
+        case loadError = "ポーズが難しくて失敗しちゃった。"
+    }
     
     override func viewDidLoad() {
         
@@ -35,25 +49,34 @@ class ViewController: UIViewController {
         
         self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
         
+        self.label.text = LabelText.normal.rawValue
+        
         self.colorButton.addAction(.init{_ in
             self.pictoView.allColor = self.colorButton.selectedColor ?? .green
+            self.label.text = LabelText.color.rawValue
         }, for: .allEvents)
         
 //        bannerView.adUnitID = ""
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+//        bannerView.rootViewController = self
+//        bannerView.load(GADRequest())
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
     }
     
     @IBAction func borderButtonTapped(_ sender: Any) {
         
         if self.borderButton.flag {
+            self.label.text = LabelText.border.rawValue
             self.pictoView.allBorderWidth = 1
             self.borderButton.tintColor = .white
             self.borderButton.backgroundColor = .systemBlue
             self.borderButton.switchFlag()
         }else{
+            self.label.text = LabelText.normal.rawValue
             self.pictoView.allBorderWidth = 0
             self.borderButton.tintColor = .tintColor
             self.borderButton.backgroundColor = .systemBackground
@@ -65,6 +88,7 @@ class ViewController: UIViewController {
     @IBAction func moveButtonTapped(_ sender: Any) {
         
         if self.moveButton.flag {
+            self.label.text = LabelText.move.rawValue
             self.editView.moveFlag = true
             self.moveButton.tintColor = .white
             self.moveButton.backgroundColor = .systemBlue
@@ -73,6 +97,7 @@ class ViewController: UIViewController {
             self.pictoView.boneAlpha = 0.6
             self.pictoView.alpha = 1
         }else{
+            self.label.text = LabelText.normal.rawValue
             self.editView.moveFlag = false
             self.moveButton.tintColor = .tintColor
             self.moveButton.backgroundColor = .systemBackground
@@ -84,13 +109,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
+        self.label.text = LabelText.reset.rawValue
         self.pictoView.center = CGPoint(x: self.editView.bounds.width/2, y: self.editView.bounds.height/2)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         self.saveImageWithData()
-        self.saveButton.setTitle("成功", for: .normal)
+//        self.saveButton.setTitle("成功", for: .normal)
         
     }
     
@@ -134,11 +160,13 @@ class ViewController: UIViewController {
             
         }
         
+        self.label.text = LabelText.save.rawValue
+        
     }
     
     func saveImageError() {
         
-        self.saveButton.setTitle("エラー", for: .normal)
+        self.label.text = LabelText.saveError.rawValue
         return
         
     }
@@ -164,7 +192,15 @@ class ViewController: UIViewController {
     func loadImageError() {
         
         DispatchQueue.main.async {
-            self.loadButton.setTitle("エラー", for: .normal)
+            self.label.text = LabelText.loadError.rawValue
+        }
+        
+    }
+    
+    func loadImageData(){
+        
+        DispatchQueue.main.async {
+            self.label.text = LabelText.load.rawValue
         }
         
     }
@@ -194,8 +230,11 @@ extension ViewController: PHPickerViewControllerDelegate {
                 }
                 
                 self.pictoView.loadAngleData(data: angleData)
+                self.loadImageData()
                 
             }
+            
+            
         }
         
     }

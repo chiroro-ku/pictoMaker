@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -123,7 +123,7 @@
                                     <action selector="loadImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vq3-h8-iSO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Sy-Oqx" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Sy-Oqx" customClass="Button" customModule="pictoMaker" customModuleProvider="target">
                                 <rect key="frame" x="20" y="807" width="82.666666666666671" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
@@ -144,6 +144,24 @@
                                     <constraint firstAttribute="height" constant="50" id="jjN-lA-wme"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEN-En-Uw2">
+                                <rect key="frame" x="0.0" y="705" width="414" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="足を触ってみてね。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgw-vZ-3fJ">
+                                        <rect key="frame" x="31" y="0.0" width="352" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Xgw-vZ-3fJ" firstAttribute="centerY" secondItem="AEN-En-Uw2" secondAttribute="centerY" id="0O0-N4-pzf"/>
+                                    <constraint firstItem="Xgw-vZ-3fJ" firstAttribute="height" secondItem="AEN-En-Uw2" secondAttribute="height" id="2m4-1u-rbF"/>
+                                    <constraint firstItem="Xgw-vZ-3fJ" firstAttribute="centerX" secondItem="AEN-En-Uw2" secondAttribute="centerX" id="BmP-SA-b5K"/>
+                                    <constraint firstItem="Xgw-vZ-3fJ" firstAttribute="width" secondItem="AEN-En-Uw2" secondAttribute="width" multiplier="0.85" id="GJD-E0-FRb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -159,16 +177,21 @@
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="5Lt-cb-Gm5" secondAttribute="height" id="DXb-IP-65c"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="leading" secondItem="C5Q-Hu-nPJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb6-2L-0bt"/>
                             <constraint firstItem="hhT-cM-HML" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MMG-fd-1zd"/>
+                            <constraint firstItem="AEN-En-Uw2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NRr-jd-rep"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AEN-En-Uw2" secondAttribute="trailing" id="Nmu-dv-O8h"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="leading" secondItem="jTU-Mn-cfN" secondAttribute="trailing" constant="8" symbolic="YES" id="OIa-Pe-cWF"/>
                             <constraint firstItem="VXG-Sy-Oqx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QKE-8N-Ery"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNb-HA-Iaj" secondAttribute="bottom" constant="20" id="QZj-hs-MGE"/>
                             <constraint firstItem="6X8-Nr-VgB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SpE-ps-8Br"/>
                             <constraint firstItem="C5Q-Hu-nPJ" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="Tk7-6l-A7L"/>
                             <constraint firstItem="4fL-Kz-d2o" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="UHy-bf-4qB"/>
+                            <constraint firstItem="4fL-Kz-d2o" firstAttribute="height" secondItem="AEN-En-Uw2" secondAttribute="height" id="Uee-Qg-yfE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fL-Kz-d2o" secondAttribute="trailing" constant="20" id="WzK-0i-vVA"/>
                             <constraint firstItem="jTU-Mn-cfN" firstAttribute="leading" secondItem="5Lt-cb-Gm5" secondAttribute="trailing" constant="8" symbolic="YES" id="XHG-Iq-aTu"/>
                             <constraint firstItem="5Lt-cb-Gm5" firstAttribute="top" secondItem="6X8-Nr-VgB" secondAttribute="bottom" constant="8" symbolic="YES" id="YGq-tk-Nam"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="drG-PG-gdv" secondAttribute="width" id="aOh-VA-mg4"/>
+                            <constraint firstItem="AEN-En-Uw2" firstAttribute="top" secondItem="4fL-Kz-d2o" secondAttribute="bottom" constant="8" symbolic="YES" id="dkM-x1-bBe"/>
+                            <constraint firstItem="AEN-En-Uw2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="drW-Sp-zJc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6X8-Nr-VgB" secondAttribute="trailing" id="eOn-hI-8eZ"/>
                             <constraint firstItem="VXG-Sy-Oqx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="fIF-bG-ack"/>
                             <constraint firstItem="zNb-HA-Iaj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="gBm-8G-mco"/>
@@ -188,10 +211,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="hhT-cM-HML" id="15d-C1-1dW"/>
                         <outlet property="borderButton" destination="4fL-Kz-d2o" id="SN0-xZ-Zeb"/>
                         <outlet property="colorButton" destination="5Lt-cb-Gm5" id="3EW-DL-GDP"/>
                         <outlet property="editView" destination="6X8-Nr-VgB" id="WIt-y2-XMq"/>
+                        <outlet property="label" destination="Xgw-vZ-3fJ" id="T2M-Bd-I6Z"/>
                         <outlet property="loadButton" destination="drG-PG-gdv" id="yyh-8Q-3ZD"/>
                         <outlet property="moveButton" destination="C5Q-Hu-nPJ" id="NQr-dO-jH5"/>
                         <outlet property="pictoView" destination="FTy-pe-v9t" id="LjS-rp-Ygo"/>
@@ -201,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-828" y="204"/>
+            <point key="canvasLocation" x="-828.98550724637687" y="203.57142857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NYD-NW-tGo">
@@ -247,16 +270,16 @@
             <size key="intrinsicContentSize" width="52.666666666666664" height="34.333333333333336"/>
         </designable>
         <designable name="VXG-Sy-Oqx">
-            <size key="intrinsicContentSize" width="76" height="34.333333333333336"/>
+            <size key="intrinsicContentSize" width="72" height="34.333333333333336"/>
         </designable>
         <designable name="drG-PG-gdv">
-            <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
+            <size key="intrinsicContentSize" width="87.666666666666671" height="34.333333333333336"/>
         </designable>
         <designable name="jTU-Mn-cfN">
             <size key="intrinsicContentSize" width="50.333333333333336" height="34.333333333333336"/>
         </designable>
         <designable name="zNb-HA-Iaj">
-            <size key="intrinsicContentSize" width="93.333333333333329" height="34.333333333333336"/>
+            <size key="intrinsicContentSize" width="87.666666666666671" height="34.333333333333336"/>
         </designable>
     </designables>
     <resources>
@@ -268,10 +291,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
